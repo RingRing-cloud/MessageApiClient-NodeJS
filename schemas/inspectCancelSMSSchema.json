@@ -1,0 +1,14 @@
+{
+    "id": "inspectCancelSMSSchema",
+    "type": "object",
+    "required": ["apiKey", "messageId"],
+    "additionalProperties": false,
+    "properties": {
+        "apiKey": {
+            "type": "string"
+        },
+        "messageId": {
+            "type": "string"
+        }
+    }
+}

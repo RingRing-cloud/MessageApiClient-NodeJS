@@ -1,0 +1,27 @@
+{
+  "name": "messageapi-client-nodejs",
+  "version": "1.0.0",
+  "description": "MessageAPI Client for NodeJS",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/RingRing-cloud/MessageApiClient-NodeJS.git"
+  },
+  "keywords": [
+    "MessageAPI",
+    "NodeJS",
+    "RingRing",
+    "SDK"
+  ],
+  "author": "Ibrahim Mourade",
+  "license": "UNLICENSED",
+  "dependencies": {
+    "ajv": "6.5.5",
+    "axios": "0.18.0",
+    "config": "2.0.1",
+    "qs": "6.5.2"
+  }
+}

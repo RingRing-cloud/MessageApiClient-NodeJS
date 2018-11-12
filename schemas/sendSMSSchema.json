@@ -1,0 +1,36 @@
+{
+    "id": "sendSMSSchema",
+    "type": "object",
+    "required": ["apiKey","to", "message"],
+    "additionalProperties": false,
+    "properties": {
+        "apiKey": {
+            "type": "string"
+        },
+        "to": {
+            "type": "string",
+            "pattern": "^[0-9]{11}(,[0-9]{11}){0,999}$"
+        },
+        "message": {
+            "type": "string"
+        },
+        "messageEncoding": {
+            "type": "string"
+        },
+        "reference": {
+            "type": "string"
+        },
+        "from": {
+            "type": "string"
+        },
+        "senderId": {
+            "type": "string"
+        }, 
+        "timeScheduled": {
+            "type": "string"
+        },
+        "timeValidity": {
+            "type": "string"
+        }
+    }
+}
