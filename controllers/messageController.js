@@ -1,6 +1,6 @@
 const ajv = require('ajv')({ schemaId: 'auto', allErrors: true });
 const axios = require('axios').create({
-  baseUrl: 'https://api.ringring.be/sms'
+  baseURL: 'https://api.ringring.be/sms'
 });
 const config = require('config');
 
@@ -85,13 +85,11 @@ const spreadApiErrors = (err) => {
   const {status} = err.response;
   if (status >= 400 && status <= 499) {
     if (status === 401 || status === 403) {
-      throw new ForbiddenError(err.message);
+      throw new ForbiddenError(err.message, status, err.response.data);
     }
-    throw new InvalidArgumetError(
-      err.message, err.data
-    );
+    throw new InvalidArgumetError(err.message, status, err.response.data);
   } else {
-    throw new InternalError(err.message);
+    throw new InternalError(err.message, status, err.response.data);
   }
 };
 
