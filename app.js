@@ -22,12 +22,4 @@ class MessageClient {
   }
 }
 
-exports.messageClient = MessageClient;
-try {
-  const a = new MessageClient('loool');
-  a.send().catch(err => {
-    console.log(err);
-  });
-} catch (error) {
-  console.log(error);
-}
+exports.MessageClient = MessageClient;
