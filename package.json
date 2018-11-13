@@ -1,6 +1,6 @@
 {
   "name": "messageapi-client-nodejs",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "description": "MessageAPI Client for NodeJS",
   "main": "app.js",
   "scripts": {

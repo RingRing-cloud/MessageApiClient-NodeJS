@@ -1,9 +1,9 @@
 {
     
     "messageApi": {
-        "send": "https://api.ringring.be/sms/v1/message",
-        "sendSandbox" : "https://api.ringring.be/sms/sandbox/message",
-        "inspect":"https://api.ringring.be/sms/v1/statusmessage",
-        "cancel": "https://api.ringring.be/sms/v1/cancel"
+        "send": "/v1/message",
+        "sendSandbox" : "/sandbox/message",
+        "inspect":"/v1/statusmessage",
+        "cancel": "/v1/cancel"
     }
 }

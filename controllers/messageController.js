@@ -1,9 +1,17 @@
 const ajv = require('ajv')({ schemaId: 'auto', allErrors: true });
-const axios = require('axios');
+const axios = require('axios').create({
+  baseUrl: 'https://api.ringring.be/sms'
+});
 const config = require('config');
 
 const sendSchema = require('../schemas/sendSMSSchema.json');
 const inspectCancelSchema = require('../schemas/inspectCancelSMSSchema.json');
+
+const {
+  InvalidArgumetError,
+  InternalError,
+  ForbiddenError
+} = require('../errors/Errors');
 
 const sendSMS = async (apiKey, to, message, ...rest) => {
   console.log('Send Process started . . . ');
@@ -20,9 +28,7 @@ const sendSMS = async (apiKey, to, message, ...rest) => {
     const resultOfSend = await axios.post(config.messageApi.sendSandbox, reqBody);
     return resultOfSend;
   } catch (error) {
-    throw new Error(
-      error.response.data.ResultDescription
-    );
+    spreadApiErrors(error);
   }
 };
 
@@ -39,9 +45,7 @@ const cancelSMS = async (apiKey, messageId) => {
     const resultOfCancel = await axios.post(config.messageApi.cancel, reqBody);
     return resultOfCancel;
   } catch (error) {
-    throw new Error(
-      error
-    );
+    spreadApiErrors(error);
   }
 };
 
@@ -63,9 +67,7 @@ const inspectSMS = async (apiKey, messageId) => {
     );
     return resultOfinspect;
   } catch (error) {
-    throw new Error(
-      error
-    );
+    spreadApiErrors(error);
   }
 };
 
@@ -73,9 +75,23 @@ const ajvValidation = (schema, data) => {
   const valid = ajv.validate(schema, data);
 
   if (!valid) {
-    throw new Error(
-      ajv.errors[0].message
+    throw new InvalidArgumetError(
+      ajv.errors[0].message, ajv.errors
     );
+  }
+};
+
+const spreadApiErrors = (err) => {
+  const {status} = err.response;
+  if (status >= 400 && status <= 499) {
+    if (status === 401 || status === 403) {
+      throw new ForbiddenError(err.message);
+    }
+    throw new InvalidArgumetError(
+      err.message, err.data
+    );
+  } else {
+    throw new InternalError(err.message);
   }
 };
 
