@@ -18,14 +18,16 @@ $ npm install --save @ringring/messageapi-client-nodejs
 
 ```Javascript
 const { MessageClient } = require('@ringring/messageapi-client-nodejs');
-
+ 
 const m = new MessageClient('YOUR-API-KEY');
-
+ 
 // First param  => phone numbers separated by , (up to 1000)
 // Second param => message content
+// Other Params ==> options ( cf. MessageAPI doc )
 m.send('32123456789', 'My sms content').catch(err => {
   console.log(err);
 });
+
 ```
 
 # Version
