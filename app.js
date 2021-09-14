@@ -9,17 +9,21 @@ class MessageClient {
   }
 
   async send(to, message, ...rest) {
-    await sendSMS(this.apiKey, to, message, ...rest);
+    const responseOfSend = await sendSMS(this.apiKey, to, message, ...rest);
+    return responseOfSend.data;
   }
   async sendToSandBox(to, message, ...rest) {
-    await sendSMSSandBox(this.apiKey, to, message, ...rest);
+    const responseOfSend = await sendSMSSandBox(this.apiKey, to, message, ...rest);
+    return responseOfSend.data;
   }
 
   async inspectSMS(messageId) {
-    await inspectSMS(this.apiKey, messageId);
+    const responseOfInspect = await inspectSMS(this.apiKey, messageId);
+    return responseOfInspect.data;
   }
   async cancel(messageId) {
-    await cancelSMS(this.apiKey, messageId);
+    const responseOfCancel = await cancelSMS(this.apiKey, messageId);
+    return responseOfCancel.data;
   }
 }
 
