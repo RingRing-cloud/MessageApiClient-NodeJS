@@ -8,12 +8,12 @@ class MessageClient {
     this.apiKey = apiKey;
   }
 
-  async send(to, message, ...rest) {
-    const responseOfSend = await sendSMS(this.apiKey, to, message, ...rest);
+  async send(to, message, rest) {
+    const responseOfSend = await sendSMS(this.apiKey, to, message, rest);
     return responseOfSend.data;
   }
-  async sendToSandBox(to, message, ...rest) {
-    const responseOfSend = await sendSMSSandBox(this.apiKey, to, message, ...rest);
+  async sendToSandBox(to, message, rest) {
+    const responseOfSend = await sendSMSSandBox(this.apiKey, to, message, rest);
     return responseOfSend.data;
   }
 

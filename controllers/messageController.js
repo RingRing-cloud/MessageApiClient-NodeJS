@@ -9,7 +9,7 @@ const inspectCancelSchema = require('../schemas/inspectCancelSMSSchema.json');
 
 const { InvalidArgumetError, InternalError, ForbiddenError } = require('../errors/Errors');
 
-const sendSMS = async (apiKey, to, message, ...rest) => {
+const sendSMS = async (apiKey, to, message, rest) => {
   console.log('Send Process started . . . ');
   const reqBody = {
     apiKey: apiKey,
@@ -27,7 +27,7 @@ const sendSMS = async (apiKey, to, message, ...rest) => {
     spreadApiErrors(error);
   }
 };
-const sendSMSSandBox = async (apiKey, to, message, ...rest) => {
+const sendSMSSandBox = async (apiKey, to, message, rest) => {
   console.log('Send To Sandbox Process started . . . ');
   const reqBody = {
     apiKey: apiKey,
