@@ -24,7 +24,7 @@ const m = new MessageClient('YOUR-API-KEY');
 // First param  => phone numbers separated by , (up to 1000)
 // Second param => message content
 // Other Params ==> options ( cf. MessageAPI doc )
-m.send('32123456789', 'My sms content').catch(err => {
+m.send('32123456789', 'My sms content', {reference: 'My reference'}).catch(err => {
   console.log(err);
 });
 

@@ -8,11 +8,11 @@ class MessageClient {
     this.apiKey = apiKey;
   }
 
-  async send(to, message, ...rest) {
-    await sendSMS(this.apiKey, to, message, ...rest);
+  async send(to, message, rest) {
+    await sendSMS(this.apiKey, to, message, rest);
   }
-  async sendToSandBox(to, message, ...rest) {
-    await sendSMSSandBox(this.apiKey, to, message, ...rest);
+  async sendToSandBox(to, message, rest) {
+    await sendSMSSandBox(this.apiKey, to, message, rest);
   }
 
   async inspectSMS(messageId) {
