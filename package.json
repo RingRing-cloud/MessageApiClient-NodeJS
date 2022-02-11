@@ -19,7 +19,7 @@
   "author": "Ibrahim Mourade",
   "license": "UNLICENSED",
   "dependencies": {
-    "ajv": "6.5.5",
+    "ajv": "6.12.3",
     "axios": "0.21.1",
     "config": "2.0.1",
     "qs": "6.5.2"
