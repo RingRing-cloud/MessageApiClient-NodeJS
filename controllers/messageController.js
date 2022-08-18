@@ -86,7 +86,7 @@ const ajvValidation = (schema, data) => {
   const valid = ajv.validate(schema, data);
 
   if (!valid) {
-    throw new InvalidArgumetError(ajv.errors[0].message, ajv.errors);
+    throw new InvalidArgumetError(ajv.errors[0].message, 400,ajv.errors);
   }
 };
 
