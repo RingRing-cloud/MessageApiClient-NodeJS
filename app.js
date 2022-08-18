@@ -1,5 +1,10 @@
-const { sendSMS, sendSMSSandBox, inspectSMS, cancelSMS } = require('./controllers/messageController');
-const { checkApiKey } = require('./utils/checks');
+const {
+  sendSMS,
+  sendSMSSandBox,
+  inspectSMS,
+  cancelSMS,
+} = require("./controllers/messageController");
+const { checkApiKey } = require("./utils/checks");
 
 class MessageClient {
   constructor(apiKey) {
@@ -9,17 +14,17 @@ class MessageClient {
   }
 
   async send(to, message, ...rest) {
-    await sendSMS(this.apiKey, to, message, ...rest);
+    return (await sendSMS(this.apiKey, to, message, ...rest)).data;
   }
   async sendToSandBox(to, message, ...rest) {
-    await sendSMSSandBox(this.apiKey, to, message, ...rest);
+    return (await sendSMSSandBox(this.apiKey, to, message, ...rest)).data;
   }
 
   async inspectSMS(messageId) {
-    await inspectSMS(this.apiKey, messageId);
+    return (await inspectSMS(this.apiKey, messageId)).data;
   }
   async cancel(messageId) {
-    await cancelSMS(this.apiKey, messageId);
+    return (await cancelSMS(this.apiKey, messageId)).data;
   }
 }
 
