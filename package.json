@@ -1,6 +1,6 @@
 {
   "name": "@ringring/messageapi-client-nodejs",
-  "version": "1.0.3",
+  "version": "1.0.6",
   "description": "MessageAPI Client for NodeJS",
   "main": "app.js",
   "scripts": {
